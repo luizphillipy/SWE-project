@@ -1,0 +1,54 @@
+/* login / sign up  */
+
+.login__box {
+    max-width: 600px;
+    background: rgba(255, 255, 255, 1);
+    height: 22rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 #178841;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}
+
+.login__form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 22rem;
+    padding: 2rem;
+}
+
+.login__icon {
+    font-size: 2rem;
+    margin: 0 8px 5px 0;
+}
+
+.login__heading {
+    margin: 0 50px;
+}
+
+.form__button {
+    justify-content: center;
+}
+
+.col-4.login__button {
+    padding-left: 0;
+}
+
+.sigin-button__container {
+    justify-content: center;
+}
+
+.sigin__button {
+    display: flex;
+    justify-content: center;
+}
+

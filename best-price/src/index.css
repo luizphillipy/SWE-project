@@ -1,0 +1,149 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height: 100vh;
+    /* background: #eeeeee; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
+
+/* NavBar */
+
+.navbar--green {
+    background: #125430;
+}
+
+.navbar a {
+    color: #fff;
+}
+
+.header {
+    background: #178841;
+}
+
+.navbar__sticky {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.navbar-brand {
+    flex-grow: 1;
+}
+
+.shopping-cart__link {
+    border: 1px solid #fff;
+    margin-right: 1rem;
+    width: 65px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    overflow: auto;
+}
+
+.shopping-cart__link div {
+    display: inline-block;
+    background: #fff;
+    color: #000;
+    height: 100%;
+    flex-grow: 1;
+    text-align: center;
+    margin-left: 5px;
+}
+
+.shopping-cart__link i {
+    padding-left: 0.2rem;
+    margin-right: 5px;
+    justify-self: flex-start;
+}
+
+.shopping-cart__link:hover {
+    text-decoration: none;
+}
+
+.navBar__profile {
+    display: flex;
+    align-items: center;
+    cursor: default;
+}
+
+.navBar__profile img {
+    margin-right: 5px;
+}
+
+.navBar__profile:hover {
+    text-decoration: none;
+}
+
+.navBar__profile {
+    display: block;
+    color: #fff;
+    position: relative;
+}
+
+.navBar__profile a:hover {
+    text-decoration: none;
+}
+
+.sub-menu-1 {
+    display: none;
+    width: 80px;
+    border-radius: 10px;
+    background-color: #fff;
+    border: 1px solid #178841;
+}
+
+.sub-menu-1 ul {
+    list-style: none;
+    padding: 5px 5px;
+    margin: 0;
+}
+
+.sub-menu-1 ul li {
+    margin-bottom: 5px;
+    padding-left: 2px;
+    cursor: pointer;
+    color: #000;
+    /*border-bottom: 1px solid black;*/
+}
+
+.sub-menu-1 ul li:hover {
+    background-color: lightgray;
+}
+
+.navBar__profile:hover .sub-menu-1 {
+    display: block;
+    position: absolute;
+    left: -5px;
+}
+
+
+/* content area */
+
+.content-area {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-area .container {
+    margin-left: auto;
+}
+
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
