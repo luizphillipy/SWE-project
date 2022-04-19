@@ -11,6 +11,10 @@
 
 .mvn/
 .idea/
+/target
+
+.class
+.iml
 
 # misc
 .DS_Store
