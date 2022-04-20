@@ -1,10 +1,10 @@
 import http from "../generic/http";
 import {baseURL} from "../../config.json";
 
-const url = baseURL + "/items";
+const url = baseURL + "/products";
 
 export const getItemsById = (data) => {
-    return http.get(url + `/GetBySubCategoryIdUserList`, {params: data});
+    return http.get(`${url}/getBySubId`, {params: data});
 };
 
 export const getSellerItemsBySellerId = (id) => {
