@@ -8,5 +8,5 @@ export const addUser = (newUser) => {
 };
 
 export const logIn = (user) => {
-    return http.post(url + `/LogIn?email=${user.email}&password=${user.password}`);
+    return http.post(url + `/login`, {email: user.email, password: user.password});
 };
