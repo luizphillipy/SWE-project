@@ -1,9 +1,9 @@
 package edu.miu.eshop.repository;
 
-import edu.miu.eshop.model.User;
+import edu.miu.eshop.model.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface OrderRepository extends JpaRepository<Order, Long> {
 }

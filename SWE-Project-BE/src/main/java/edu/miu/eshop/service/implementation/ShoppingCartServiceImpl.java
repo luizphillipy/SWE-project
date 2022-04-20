@@ -6,9 +6,11 @@ import edu.miu.eshop.repository.ShoppingCartItemRepository;
 import edu.miu.eshop.repository.ShoppingCartRepository;
 import edu.miu.eshop.service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     private ShoppingCartRepository shoppingCartRepository;

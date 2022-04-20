@@ -12,10 +12,10 @@ import java.util.Collection;
 
 @Entity
 @Table(name = "users")
-public class User implements UserDetails {
+public class Customer implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer userId;
+    private Long customerId;
 
     @Column(nullable = false, unique = true)
     @NotBlank(message = "* Username is required")
@@ -36,17 +36,17 @@ public class User implements UserDetails {
     private boolean credentialsNonExpired;
     private boolean enabled;
 
-    public User() {
+    public Customer() {
         this(null, null);
     }
 
-    public User(String password, String email) {
+    public Customer(String password, String email) {
         this.password = password;
         this.email = email;
     }
 
-    public User(Integer userId, String username, String password, String email, boolean accountNonExpired, boolean accountNonLocked, boolean credentialsNonExpired, boolean enabled) {
-        this.userId = userId;
+    public Customer(Long customerId, String username, String password, String email, boolean accountNonExpired, boolean accountNonLocked, boolean credentialsNonExpired, boolean enabled) {
+        this.customerId = customerId;
         this.username = username;
         this.password = password;
         this.email = email;
@@ -56,12 +56,12 @@ public class User implements UserDetails {
         this.enabled = enabled;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public Long getUserId() {
+        return customerId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUserId(Long customerId) {
+        this.customerId = customerId;
     }
 
     public String getUsername() {

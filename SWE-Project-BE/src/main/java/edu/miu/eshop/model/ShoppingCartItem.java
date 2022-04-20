@@ -2,6 +2,8 @@ package edu.miu.eshop.model;
 
 import javax.persistence.*;
 
+@Entity
+@Table(name = "ShoppingCartItem")
 public class ShoppingCartItem {
 
     @Id
@@ -12,7 +14,7 @@ public class ShoppingCartItem {
     private ShoppingCart shoppingCart;
     @JoinColumn(name = "productId")
     private Product product;
-    private int quantity;
+    private Integer quantity;
 
     public ShoppingCart getShoppingCart() {
         return shoppingCart;
