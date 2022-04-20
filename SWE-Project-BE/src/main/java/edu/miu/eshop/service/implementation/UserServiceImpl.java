@@ -4,5 +4,5 @@ import edu.miu.eshop.service.UserService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserServiceImplementation implements UserService {
+public class UserServiceImpl implements UserService {
 }

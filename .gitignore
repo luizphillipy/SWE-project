@@ -14,6 +14,9 @@ node_modules/
 .idea/
 /target
 
+SWE-Project-BE/target
+SWE-Project-BE/target/
+
 .class
 .iml
 
