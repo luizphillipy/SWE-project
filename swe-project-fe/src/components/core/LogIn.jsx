@@ -3,6 +3,7 @@ import * as Joi from "joi-browser";
 import Form from "../../common/form";
 import {BsPeopleCircle} from "react-icons/bs";
 import {toast, ToastContainer} from "react-toastify";
+import {logIn} from "../../services/component/users";
 
 class LogIn extends Form {
     state = {
@@ -15,9 +16,9 @@ class LogIn extends Form {
 
     doSubmit = async () => {
         const loginData = {...this.state.data};
-        // let {data: user} = await logIn(loginData);
+        let {data: user} = await logIn(loginData);
         //TODO make a call to the BE
-        let user = {name: 'Ali', id: 'id'}
+        // let user = {name: 'Ali', id: 'id'}
         if (user) {
             localStorage.setItem("user", JSON.stringify(user));
             this.redirect(user);

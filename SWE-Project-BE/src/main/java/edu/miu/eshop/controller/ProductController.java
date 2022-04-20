@@ -9,10 +9,10 @@ import java.util.List;
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping(value = {"api/products"})
-public class ProductsController {
+public class ProductController {
     private final ProductService productService;
 
-    public ProductsController(ProductService productService) {
+    public ProductController(ProductService productService) {
         this.productService = productService;
     }
 

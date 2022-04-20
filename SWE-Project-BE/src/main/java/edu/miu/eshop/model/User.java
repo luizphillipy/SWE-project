@@ -4,8 +4,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -18,23 +16,18 @@ public class User implements UserDetails {
     private Integer userId;
 
     @Column(nullable = false, unique = true)
-    @NotBlank(message = "* Username is required")
     private String username;
 
     @Column(nullable = false)
-    @NotBlank(message = "* Password is required")
     @Size(min = 8)
     private String password;
 
     @Column(nullable = false, unique = true)
-    @NotBlank(message = "* Email is required")
-    @Email(message = "{errors.invalid_email}")
+
     private String email;
 
-    private boolean accountNonExpired;
-    private boolean accountNonLocked;
-    private boolean credentialsNonExpired;
-    private boolean enabled;
+    @Column(nullable = false)
+    private String phoneNumber;
 
     public User() {
         this(null, null);
@@ -43,17 +36,6 @@ public class User implements UserDetails {
     public User(String password, String email) {
         this.password = password;
         this.email = email;
-    }
-
-    public User(Integer userId, String username, String password, String email, boolean accountNonExpired, boolean accountNonLocked, boolean credentialsNonExpired, boolean enabled) {
-        this.userId = userId;
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.accountNonExpired = accountNonExpired;
-        this.accountNonLocked = accountNonLocked;
-        this.credentialsNonExpired = credentialsNonExpired;
-        this.enabled = enabled;
     }
 
     public Integer getUserId() {
@@ -68,34 +50,33 @@ public class User implements UserDetails {
         return username;
     }
 
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return false;
+    }
+
     public void setUsername(String username) {
         this.username = username;
     }
 
     @Override
-    public boolean isAccountNonExpired() {
-        return this.accountNonExpired;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return this.accountNonLocked;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return this.credentialsNonExpired;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return this.enabled;
-    }
-
-    @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        Collection<GrantedAuthority> authorities = new ArrayList<>();
-        return authorities;
+        return new ArrayList<>();
     }
 
     public String getPassword() {
@@ -114,19 +95,4 @@ public class User implements UserDetails {
         this.email = email;
     }
 
-    public void setAccountNonExpired(boolean accountNonExpired) {
-        this.accountNonExpired = accountNonExpired;
-    }
-
-    public void setAccountNonLocked(boolean accountNonLocked) {
-        this.accountNonLocked = accountNonLocked;
-    }
-
-    public void setCredentialsNonExpired(boolean credentialsNonExpired) {
-        this.credentialsNonExpired = credentialsNonExpired;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
 }
