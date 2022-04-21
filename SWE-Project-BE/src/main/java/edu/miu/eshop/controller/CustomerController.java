@@ -1,26 +1,28 @@
 package edu.miu.eshop.controller;
 
-import edu.miu.eshop.model.User;
-import edu.miu.eshop.service.UserService;
+
+import edu.miu.eshop.model.Customer;
+import edu.miu.eshop.service.CustomerService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
-@RequestMapping(value = {"api", "api/users"})
-public class UserController {
-    private final UserService userService;
+@RequestMapping(value = {"api", "api/customers"})
+public class CustomerController {
+    private final CustomerService userService;
 
-    public UserController(UserService userService) {
+    public CustomerController(CustomerService userService) {
         this.userService = userService;
     }
 
     @PostMapping(value = {"/login"})
-    public User login(@RequestBody User user) {
+    public Customer login(@RequestBody Customer user) {
         return userService.login(user.getEmail(), user.getPassword());
     }
 
     @PostMapping(value = {"/signup"})
-    public User signup(@RequestBody User user) {
+    public Customer signup(@RequestBody Customer user) {
         return userService.signup(user);
     }
+
 }
