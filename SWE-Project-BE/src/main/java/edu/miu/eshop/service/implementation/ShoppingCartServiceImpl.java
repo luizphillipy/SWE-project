@@ -66,6 +66,8 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
             else
                 shoppingCartItem.setQuantity(shoppingCartItem.getQuantity() - 1);
 
+            this.shoppingCartItemRepository.save(shoppingCartItem);
+
             if(shoppingCartItem.getQuantity() == 0) {
                 this.shoppingCartItemRepository.delete(shoppingCartItem);
                 if (!this.shoppingCartItemRepository.findAll().stream()
@@ -75,8 +77,8 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
                     this.shoppingCartRepository.delete(shoppingCart);
                 }
             }
-            else
-                this.shoppingCartItemRepository.save(shoppingCartItem);
+
+
         }
     }
 
