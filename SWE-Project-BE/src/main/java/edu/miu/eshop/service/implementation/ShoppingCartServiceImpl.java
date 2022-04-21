@@ -1,5 +1,6 @@
 package edu.miu.eshop.service.implementation;
 
+import edu.miu.eshop.model.Customer;
 import edu.miu.eshop.model.ShoppingCart;
 import edu.miu.eshop.model.ShoppingCartItem;
 import edu.miu.eshop.repository.ShoppingCartItemRepository;
@@ -29,10 +30,9 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     @Override
     public void updateQuantity(Long shoppingCartId, Long productId, int quantity) {
-
-       ShoppingCartItem shoppingCartItem = this.shoppingCartItemRepository.findByShoppingCartIdAndProductId(shoppingCartId, productId);
-       shoppingCartItem.setQuantity(quantity);
-       this.shoppingCartItemRepository.save(shoppingCartItem);
+        ShoppingCartItem shoppingCartItem = this.shoppingCartItemRepository.findByShoppingCartIdAndProductId(shoppingCartId, productId);
+        shoppingCartItem.setQuantity(quantity);
+        this.shoppingCartItemRepository.save(shoppingCartItem);
     }
 
     @Override
@@ -41,13 +41,22 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-    public Long getActiveShoppingCart(Long userId) {
-        return this.shoppingCartRepository.findAll().stream().filter(x -> x.getCustomer().getCustomerId() == userId && x.isActive()).findFirst().get().getShoppingCartId();
+    public Long getActiveShoppingCartId(Long userId) {
+        ShoppingCart shoppingCart = this.shoppingCartRepository.findAll().stream().filter(x -> x.getCustomer().getCustomerId() == userId ).findFirst().orElseGet(() -> null);
+
+        if(shoppingCart != null) {
+            return  shoppingCart.getShoppingCartId();
+        }
+
+        return null;
     }
 
     @Override
     public Integer getShoppingCartItemsNumber(Long shoppingCartId) {
-        return this.shoppingCartItemRepository.findAll().stream().filter(x -> x.getShoppingCart().getShoppingCartId() == shoppingCartId).collect(Collectors.toList()).size();
-    }
+        List<ShoppingCartItem> shoppingCartItems = this.shoppingCartItemRepository.findAll().stream().filter(x -> x.getShoppingCart().getShoppingCartId() == shoppingCartId).collect(Collectors.toList());
 
+        if(shoppingCartItems.size() > 0) return shoppingCartItems.size();
+
+        return 0;
+    }
 }

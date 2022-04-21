@@ -1,5 +1,6 @@
 package edu.miu.eshop.controller;
 
+import edu.miu.eshop.DTO.LoginResponse;
 import edu.miu.eshop.model.Customer;
 import edu.miu.eshop.service.CustomerService;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ public class CustomerController {
     }
 
     @PostMapping(value = {"/login"})
-    public Customer login(@RequestBody Customer user) {
+    public LoginResponse login(@RequestBody Customer user) {
         return userService.login(user.getEmail(), user.getPassword());
     }
 

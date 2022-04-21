@@ -65,4 +65,12 @@ public class Product {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public String getAttachmentURL() {
+        return attachmentURL;
+    }
+
+    public void setAttachmentURL(String attachmentURL) {
+        this.attachmentURL = attachmentURL;
+    }
 }

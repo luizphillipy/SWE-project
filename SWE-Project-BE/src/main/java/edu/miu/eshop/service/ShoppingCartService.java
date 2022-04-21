@@ -10,6 +10,6 @@ public interface ShoppingCartService {
     ShoppingCart addCartItem(ShoppingCart shoppingCart);
     void updateQuantity(Long shoppingCartId, Long productId, int quantity);
     List<ShoppingCartItem> getShoppingCartDetails(Long shoppingCartId);
-    Long getActiveShoppingCart(Long userId);
+    Long getActiveShoppingCartId(Long userId);
     Integer getShoppingCartItemsNumber(Long userId);
 }

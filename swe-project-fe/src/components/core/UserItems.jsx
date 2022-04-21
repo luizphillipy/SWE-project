@@ -13,14 +13,14 @@ class UserItems extends Component {
 
     async componentDidMount() {
         const {data: items} = await getItemsById({
-            id: this.props.match.params.id, userId: this.context.currentUser.id,
+            subCategoryId: this.props.match.params.id, userId: this.context.currentUser.customerId,
         });
         this.setState({items});
     }
 
     addToCart = async (item) => {
         await add({
-            sellerItemId: item.id, userId: this.context.currentUser.id, quantity: 1,
+            sellerItemId: item.id, userId: this.context.currentUser.customerId, quantity: 1,
         });
         let items = [...this.state.items];
         let selectedItem = items.find((selected) => selected.id === item.id);
@@ -32,7 +32,7 @@ class UserItems extends Component {
 
     removeFromCart = async (item) => {
         await remove({
-            sellerItemId: item.id, userId: this.context.currentUser.id, quantity: 1,
+            sellerItemId: item.id, userId: this.context.currentUser.customerId, quantity: 1,
         });
         let items = [...this.state.items];
         let selectedItem = items.find((selected) => selected.id === item.id);
@@ -60,13 +60,12 @@ const UserItemsComponent = (props) => {
                 <div className="item-card__image__container">
                     <img
                         className="item-card__image"
-                        src={item.attachmentURL}
+                        src={`data:image/jpeg;base64,${item.attachmentURL}`}
                         alt=""
                     />
                 </div>
                 <div className="card__body">
                     <div className="card__description">{item.description}</div>
-                    <div className="item__seller">From: {item.sellerName}</div>
                     <div className="item__seller">Price: ${item.price}</div>
                     <div className="item__footer">
                         {isLoggedIn() && item.isInBag && (<button

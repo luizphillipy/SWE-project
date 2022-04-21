@@ -20,7 +20,7 @@ export class App extends Component {
     userDataUpdated = (user) => {
         const currentUser = user;
         this.setState({
-            currentUser, bagItemsQuantity: currentUser.bagItemsQuantity,
+            currentUser: currentUser.customer, bagItemsQuantity: currentUser.bagItemsQuantity,
         });
     };
 

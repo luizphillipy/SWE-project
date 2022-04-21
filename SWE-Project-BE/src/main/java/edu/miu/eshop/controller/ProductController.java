@@ -1,5 +1,6 @@
 package edu.miu.eshop.controller;
 
+import edu.miu.eshop.DTO.ProductsRequest;
 import edu.miu.eshop.model.Product;
 import edu.miu.eshop.service.ProductService;
 import org.springframework.web.bind.annotation.*;
@@ -21,8 +22,8 @@ public class ProductController {
         return productService.getAll();
     }
 
-    @GetMapping(value = {"/{id}"})
-    public List<Product> getBySubId(@PathVariable long id) {
-        return productService.getBySubCategoryId(id);
+    @PostMapping(value = {"/getBySubId"})
+    public List<Product> getBySubId(@RequestBody ProductsRequest request) {
+        return productService.getBySubCategoryId(request);
     }
 }

@@ -1,5 +1,6 @@
 package edu.miu.eshop.service.implementation;
 
+import edu.miu.eshop.DTO.ProductsRequest;
 import edu.miu.eshop.model.Product;
 import edu.miu.eshop.repository.ProductRepository;
 import edu.miu.eshop.service.ProductService;
@@ -22,10 +23,10 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getBySubCategoryId(long id) {
+    public List<Product> getBySubCategoryId(ProductsRequest request) {
         return productRepository.findAll()
                 .stream()
-                .filter(product -> product.getSubCategory().getId() == id)
+                .filter(product -> product.getSubCategory().getId() == request.getSubCategoryId())
                 .collect(Collectors.toList());
     }
 }

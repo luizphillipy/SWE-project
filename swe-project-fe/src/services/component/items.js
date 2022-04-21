@@ -4,7 +4,7 @@ import {baseURL} from "../../config.json";
 const url = baseURL + "/products";
 
 export const getItemsById = (data) => {
-    return http.get(`${url}/getBySubId`, {params: data});
+    return http.post(`${url}/getBySubId`, data);
 };
 
 export const getSellerItemsBySellerId = (id) => {
