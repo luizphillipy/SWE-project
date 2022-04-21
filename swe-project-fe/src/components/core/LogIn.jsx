@@ -4,6 +4,7 @@ import Form from "../../common/form";
 import {BsPeopleCircle} from "react-icons/bs";
 import {toast, ToastContainer} from "react-toastify";
 import {logIn} from "../../services/component/users";
+import {isLoggedIn} from "../../services/generic/currentUserValidation";
 
 class LogIn extends Form {
     state = {
@@ -17,8 +18,6 @@ class LogIn extends Form {
     doSubmit = async () => {
         const loginData = {...this.state.data};
         let {data: user} = await logIn(loginData);
-        //TODO make a call to the BE
-        // let user = {name: 'Ali', id: 'id'}
         if (user) {
             localStorage.setItem("user", JSON.stringify(user));
             this.redirect(user);
@@ -33,6 +32,7 @@ class LogIn extends Form {
     };
 
     render() {
+        if (isLoggedIn()) this.props.history.replace("/MainCategories");
         return (<div className="login__box">
             <div className="login__form">
                 <h2 className="login__heading">

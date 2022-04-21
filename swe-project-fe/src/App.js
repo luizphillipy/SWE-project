@@ -42,8 +42,8 @@ export class App extends Component {
     }
 
     renderUserData = () => {
-        const {name, id} = this.state.currentUser;
-        if (id !== undefined) {
+        const {username, userId} = this.state.currentUser;
+        if (userId !== undefined) {
             return (<React.Fragment>
                 {(<div className="shopping-cart__link">
                     <Link to="/userOrderList">
@@ -59,7 +59,7 @@ export class App extends Component {
                         height="25"
                         alt=""
                     />
-                    {name}
+                    {username}
                     <div className="sub-menu-1">
                         <ul>
                             {(<Link to="/profile">
@@ -110,10 +110,8 @@ export class App extends Component {
                     <Route path="/signUp" exact component={SignUp}/>
                     <Route
                         path="/LogIn"
-                        render={(props) => (<LogIn
-                            onUpdateUserData={(user) => this.userDataUpdated(user)}
-                            {...props}
-                        />)}
+                        render={(props) => (
+                            <LogIn onUpdateUserData={(user) => this.userDataUpdated(user)} {...props}/>)}
                     />
                     <ProtectedRoute path="/profile" component={Profile}/>
                     <ProtectedRoute

@@ -28,7 +28,7 @@ class Profile extends Component {
                     <div>
                         <i className="fa fa-user edit__icone give__color"/>
                         {": "}
-                        {this.state.currentUser.name}
+                        {this.state.currentUser.username}
                     </div>
                     <div>
                         <i className="fa fa-envelope edit__icone give__color"/>

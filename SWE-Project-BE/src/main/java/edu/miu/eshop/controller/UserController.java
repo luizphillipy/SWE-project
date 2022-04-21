@@ -1,6 +1,5 @@
 package edu.miu.eshop.controller;
 
-
 import edu.miu.eshop.model.User;
 import edu.miu.eshop.service.UserService;
 import org.springframework.web.bind.annotation.*;
@@ -20,4 +19,8 @@ public class UserController {
         return userService.login(user.getEmail(), user.getPassword());
     }
 
+    @PostMapping(value = {"/signup"})
+    public User signup(@RequestBody User user) {
+        return userService.signup(user);
+    }
 }

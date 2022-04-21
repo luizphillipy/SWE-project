@@ -20,11 +20,15 @@ public class UserServiceImpl implements UserService {
                 .findAll()
                 .stream()
                 .filter(user -> user.getEmail().equals(email) && user.getPassword().equals(password))
-                .findFirst().get();
+                .findFirst()
+                .orElseGet(() -> null);
     }
 
     @Override
     public User signup(User user) {
+        if (userRepository.findAll().stream().anyMatch(u -> u.getEmail().equals(user.getEmail()))) {
+            return null;
+        }
         return userRepository.save(user);
     }
 }

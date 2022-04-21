@@ -4,7 +4,12 @@ import {baseURL} from "../../config.json";
 const url = baseURL + "/users";
 
 export const addUser = (newUser) => {
-    return http.post(url + "/Add", newUser);
+    return http.post(`${url}/signup`, {
+        username: newUser.name,
+        password: newUser.password,
+        email: newUser.email,
+        phoneNumber: newUser.phoneNumber
+    });
 };
 
 export const logIn = (user) => {

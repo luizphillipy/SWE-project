@@ -5,8 +5,10 @@ import {addUser} from "../../services/component/users";
 import {FaSignInAlt} from "react-icons/fa";
 
 import {toast, ToastContainer} from "react-toastify";
+import {isLoggedIn} from "../../services/generic/currentUserValidation";
 
 class SignUp extends Form {
+
     state = {
         data: {email: "", name: "", phoneNumber: undefined, password: ""}, errors: {},
     };
@@ -15,14 +17,19 @@ class SignUp extends Form {
         email: Joi.string().required().email().label("Email"),
         name: Joi.string().required().label("User Name"),
         phoneNumber: Joi.number().required().label("Phone Number"),
-        password: Joi.string().required().label("Password"),
+        password: Joi.string().required().min(8).label("Password"),
     };
 
     doSubmit = async () => {
         const newUser = {...this.state.data};
-        newUser.phoneNumber = parseInt(newUser.phoneNumber);
         await addUser(newUser)
-            .then(() => this.props.history.replace("/logIn"))
+            .then(({data: user}) => {
+                if (user) {
+                    this.props.history.replace("/logIn")
+                } else {
+                    toast.error("Email is Taken");
+                }
+            })
             .catch((response) => {
                 if (response.response.status === 400) {
                     toast.error("Email is Taken");
@@ -31,6 +38,7 @@ class SignUp extends Form {
     };
 
     render() {
+        if (isLoggedIn()) this.props.history.replace("/MainCategories");
         return (<div className="center-box">
             <div className="login__box">
                 <div className="login__form">
@@ -49,7 +57,7 @@ class SignUp extends Form {
                         </div>
                         <div className="row">
                             <div className="col p-2">
-                                {this.renderInput("phoneNumber", "Phone Number", "number")}
+                                {this.renderInput("phoneNumber", "Phone Number", 'number')}
                             </div>
                             <div className="col p-2">
                                 {this.renderInput("password", "Password", "password")}
