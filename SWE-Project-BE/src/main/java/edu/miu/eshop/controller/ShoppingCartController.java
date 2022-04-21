@@ -19,13 +19,14 @@ public class ShoppingCartController {
     }
 
     @PostMapping(value = "/addCartItem")
+
     public ShoppingCart addCartItem(@RequestBody ShoppingCartRequest request) {
         return this.shoppingCartService.addCartItem(request);
     }
 
-    @GetMapping(value = "/updateQuantity")
-    public void updateQuantity(Long shoppingCartId, Long productId, int quantity) {
-        this.shoppingCartService.updateQuantity(shoppingCartId, productId, quantity);
+    @PostMapping(value = "/updateQuantity")
+    public void updateQuantity(Long shoppingCartId, Long productId, boolean isAdd) {
+        this.shoppingCartService.updateQuantity(shoppingCartId, productId, isAdd);
     }
 
     @GetMapping(value = "/getShoppingCartDetails")

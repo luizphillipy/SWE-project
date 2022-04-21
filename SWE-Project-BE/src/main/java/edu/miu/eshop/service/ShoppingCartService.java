@@ -7,10 +7,9 @@ import edu.miu.eshop.model.ShoppingCartItem;
 import java.util.List;
 
 public interface ShoppingCartService {
-
     ShoppingCart addCartItem(ShoppingCartRequest request);
 
-    void updateQuantity(Long shoppingCartId, Long productId, int quantity);
+    void updateQuantity(Long shoppingCartId, Long productId, boolean isAdd);
 
     List<ShoppingCartItem> getShoppingCartDetails(Long shoppingCartId);
 
