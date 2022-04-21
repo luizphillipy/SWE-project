@@ -25,7 +25,7 @@ public class ShoppingCartController {
 
     @PostMapping(value = "/updateQuantity")
     public void updateQuantity(@RequestBody UpdateQuantityRequest request) {
-        this.shoppingCartService.updateQuantity(request.getShoppingCartId(), request.getProductId(), request.isAdd());
+        this.shoppingCartService.updateQuantity(request.getShoppingCartId(), request.getProductId(), request.getIsAdd());
     }
 
     @GetMapping(value = "/getShoppingCartDetails/{id}")

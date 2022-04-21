@@ -30,7 +30,7 @@ public class CustomerServiceImpl implements CustomerService {
             var loginRes = new LoginResponse();
             loginRes.setCustomer(customer);
             loginRes.setShoppingCartId(shoppingCartService.getActiveShoppingCartId(customer.getCustomerId()));
-            loginRes.setBagItemsQuantity(shoppingCartService.getShoppingCartItemsNumber(customer.getCustomerId()));
+            loginRes.setBagItemsQuantity(shoppingCartService.getShoppingCartItemsNumber(loginRes.getShoppingCartId()));
             return loginRes;
         }
 

@@ -3,7 +3,7 @@ package edu.miu.eshop.DTO;
 public class UpdateQuantityRequest {
     private Long shoppingCartId;
     private Long productId;
-    private boolean isAdd;
+    private int isAdd;
 
     public Long getShoppingCartId() {
         return shoppingCartId;
@@ -21,11 +21,11 @@ public class UpdateQuantityRequest {
         this.productId = productId;
     }
 
-    public boolean isAdd() {
+    public int getIsAdd() {
         return isAdd;
     }
 
-    public void setAdd(boolean add) {
-        isAdd = add;
+    public void setIsAdd(int isAdd) {
+        this.isAdd = isAdd;
     }
 }

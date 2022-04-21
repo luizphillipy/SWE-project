@@ -19,7 +19,7 @@ class UserOrderList extends Component {
 
     addToCart = async (id) => {
         await update({
-            productId: id, shoppingCartId: this.context.shoppingCartId, isAdd: true,
+            productId: id, shoppingCartId: this.context.shoppingCartId, isAdd: 1,
         });
         let items = [...this.state.items];
         let selectedItem = items.find((i) => i.product.id === id);
@@ -30,7 +30,7 @@ class UserOrderList extends Component {
 
     removeFromCart = async (id) => {
         await update({
-            productId: id, shoppingCartId: this.context.shoppingCartId, isAdd: false,
+            productId: id, shoppingCartId: this.context.shoppingCartId, isAdd: 0,
         });
         let items = [...this.state.items];
         let selectedItem = items.find((i) => i.product.id === id);

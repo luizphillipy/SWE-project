@@ -9,7 +9,7 @@ import java.util.List;
 public interface ShoppingCartService {
     ShoppingCartItem addCartItem(ShoppingCartRequest request);
 
-    void updateQuantity(Long shoppingCartId, Long productId, boolean isAdd);
+    void updateQuantity(Long shoppingCartId, Long productId, int isAdd);
 
     List<ShoppingCartItem> getShoppingCartDetails(Long shoppingCartId);
 
