@@ -1,14 +1,11 @@
 import http from "../generic/http";
 import {baseURL} from "../../config.json";
 
-const url = baseURL + "/users";
+const url = baseURL + "/customers";
 
 export const addUser = (newUser) => {
     return http.post(`${url}/signup`, {
-        username: newUser.name,
-        password: newUser.password,
-        email: newUser.email,
-        phoneNumber: newUser.phoneNumber
+        username: newUser.name, password: newUser.password, email: newUser.email, phoneNumber: newUser.phoneNumber
     });
 };
 

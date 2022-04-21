@@ -19,7 +19,7 @@ public class CustomerServiceImpl implements CustomerService {
         return CustomerRepository
                 .findAll()
                 .stream()
-                .filter(Customer -> Customer.getEmail().equals(email) && Customer.getPassword().equals(password))
+                .filter(customer -> customer.getEmail().equals(email) && customer.getPassword().equals(password))
                 .findFirst()
                 .orElseGet(() -> null);
     }

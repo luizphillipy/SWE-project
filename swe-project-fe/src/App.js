@@ -28,7 +28,7 @@ export class App extends Component {
         localStorage.setItem("user", JSON.stringify({
             ...this.state.currentUser, bagItemsQuantity: number,
         }));
-        this.setState({bagItemsQuantity: number});
+        this.setState({bagItemsQuantity: number ?? 0});
     };
 
     componentWillMount() {
@@ -42,8 +42,8 @@ export class App extends Component {
     }
 
     renderUserData = () => {
-        const {username, userId} = this.state.currentUser;
-        if (userId !== undefined) {
+        const {username, customerId} = this.state.currentUser;
+        if (customerId !== undefined) {
             return (<React.Fragment>
                 {(<div className="shopping-cart__link">
                     <Link to="/userOrderList">
