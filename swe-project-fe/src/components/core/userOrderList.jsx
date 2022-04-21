@@ -9,7 +9,11 @@ class UserOrderList extends Component {
     };
 
     async componentDidMount() {
-        const {data: items} = await getOrderItems(this.context.shoppingCartId);
+        const {data} = await getOrderItems(this.context.shoppingCartId);
+        let items = data.map(item => {
+            item.isInBag = true
+            return item
+        })
         this.setState({items});
     }
 
@@ -31,6 +35,7 @@ class UserOrderList extends Component {
         let items = [...this.state.items];
         let selectedItem = items.find((i) => i.product.id === id);
         selectedItem.quantity -= 1;
+        selectedItem.isInBag = selectedItem.quantity !== 0;
         this.setState({items});
         this.context.updateNumber(--this.context.bagItemsQuantity);
     };
@@ -46,7 +51,7 @@ class UserOrderList extends Component {
                     <div className="order-table__columns">Total</div>
                 </div>
 
-                {this.state.items.map(({product: {name, price, id}, quantity}) => (
+                {this.state.items.map(({product: {name, price, id}, quantity, isInBag}) => isInBag && (
                     <div className="order-table__row" key={id}>
                         <div className="order-table__columns">{name}</div>
                         <div className="order-table__columns">{price}</div>
