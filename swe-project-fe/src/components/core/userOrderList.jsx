@@ -38,6 +38,7 @@ class UserOrderList extends Component {
         selectedItem.isInBag = selectedItem.quantity !== 0;
         this.setState({items});
         this.context.updateNumber(--this.context.bagItemsQuantity);
+        if (this.context.bagItemsQuantity === 0) this.context.updateShoppingCartId(null)
     };
 
     render() {

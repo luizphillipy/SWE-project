@@ -19,11 +19,12 @@ class UserItems extends Component {
     }
 
     addToCart = async (item) => {
-        await add({
+        const {data} = await add({
             productId: item.id,
             userId: this.context.currentUser.customerId,
             shoppingCartId: this.context.shoppingCartId,
         });
+        this.context.updateShoppingCartId(data.shoppingCart.shoppingCartId)
         this.context.updateNumber(++this.context.bagItemsQuantity);
     };
 

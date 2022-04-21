@@ -33,6 +33,15 @@ export class App extends Component {
         this.setState({bagItemsQuantity: number});
     };
 
+    updateShoppingCartId = (shoppingCartId) => {
+        localStorage.setItem("user", JSON.stringify({
+            customer: this.state.currentUser,
+            shoppingCartId: shoppingCartId,
+            bagItemsQuantity: this.state.bagItemsQuantity,
+        }));
+        this.setState({shoppingCartId: shoppingCartId});
+    }
+
     componentWillMount() {
         const user = localStorage.getItem("user");
         if (user) {
@@ -103,6 +112,7 @@ export class App extends Component {
                 shoppingCartId: this.state.shoppingCartId,
                 bagItemsQuantity: this.state.bagItemsQuantity,
                 updateNumber: this.updateNumber,
+                updateShoppingCartId: this.updateShoppingCartId
             }}
         >
             <React.Fragment>
