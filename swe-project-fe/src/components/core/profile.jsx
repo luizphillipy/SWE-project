@@ -14,7 +14,7 @@ class Profile extends Component {
         const user = localStorage.getItem("user");
         if (user) {
             const currentUser = JSON.parse(user);
-            this.setState({currentUser});
+            this.setState({currentUser: currentUser.customer});
         }
     }
 

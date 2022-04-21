@@ -15,28 +15,32 @@ import profileimg from "./images/profileimg.jpg";
 import "./App.css";
 
 export class App extends Component {
-    state = {currentUser: {}, bagItemsQuantity: 0};
+    state = {currentUser: {}, bagItemsQuantity: 0, shoppingCartId: null};
 
     userDataUpdated = (user) => {
-        const currentUser = user;
+        const loginData = user;
         this.setState({
-            currentUser: currentUser.customer, bagItemsQuantity: currentUser.bagItemsQuantity,
+            currentUser: loginData.customer,
+            bagItemsQuantity: loginData.bagItemsQuantity,
+            shoppingCartId: loginData.shoppingCartId,
         });
     };
 
     updateNumber = (number) => {
         localStorage.setItem("user", JSON.stringify({
-            ...this.state.currentUser, bagItemsQuantity: number,
+            customer: this.state.currentUser, shoppingCartId: this.state.shoppingCartId, bagItemsQuantity: number,
         }));
-        this.setState({bagItemsQuantity: number ?? 0});
+        this.setState({bagItemsQuantity: number});
     };
 
     componentWillMount() {
         const user = localStorage.getItem("user");
         if (user) {
-            const currentUser = JSON.parse(user);
+            const loginData = JSON.parse(user);
             this.setState({
-                currentUser, bagItemsQuantity: currentUser.bagItemsQuantity,
+                currentUser: loginData.customer,
+                bagItemsQuantity: loginData.bagItemsQuantity,
+                shoppingCartId: loginData.shoppingCartId,
             });
         }
     }
@@ -95,7 +99,10 @@ export class App extends Component {
     render() {
         return (<UserContext.Provider
             value={{
-                currentUser: this.state.currentUser, updateNumber: this.updateNumber,
+                currentUser: this.state.currentUser,
+                shoppingCartId: this.state.shoppingCartId,
+                bagItemsQuantity: this.state.bagItemsQuantity,
+                updateNumber: this.updateNumber,
             }}
         >
             <React.Fragment>

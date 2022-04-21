@@ -20,16 +20,11 @@ class UserItems extends Component {
 
     addToCart = async (item) => {
         await add({
-            product: item,
+            productId: item.id,
             userId: this.context.currentUser.customerId,
-            quantity: 1,
+            shoppingCartId: this.context.shoppingCartId,
         });
-        let items = [...this.state.items];
-        let selectedItem = items.find((selected) => selected.id === item.id);
-        selectedItem.quantity += 1;
-        selectedItem.isInBag = true;
-        this.setState({items});
-        this.context.updateNumber(++this.context.currentUser.bagItemsQuantity);
+        this.context.updateNumber(++this.context.bagItemsQuantity);
     };
 
     removeFromCart = async (item) => {
