@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ShoppingCartServiceImpl implements ShoppingCartService {
@@ -37,6 +38,16 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     @Override
     public List<ShoppingCartItem> getShoppingCartDetails(Long shoppingCartId) {
         return this.shoppingCartItemRepository.findById(shoppingCartId).stream().toList();
+    }
+
+    @Override
+    public Long getActiveShoppingCart(Long userId) {
+        return this.shoppingCartRepository.findAll().stream().filter(x -> x.getCustomer().getCustomerId() == userId && x.isActive()).findFirst().get().getShoppingCartId();
+    }
+
+    @Override
+    public Integer getShoppingCartItemsNumber(Long shoppingCartId) {
+        return this.shoppingCartItemRepository.findAll().stream().filter(x -> x.getShoppingCart().getShoppingCartId() == shoppingCartId).collect(Collectors.toList()).size();
     }
 
 }

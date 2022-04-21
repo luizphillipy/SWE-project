@@ -17,20 +17,15 @@ public class ShoppingCartItem {
     @JoinColumn(name = "productId")
     private Product product;
 
-    @OneToOne
-    @JoinColumn(name = "orderId")
-    private Order order;
-
     private Integer quantity;
 
     public ShoppingCartItem() {
     }
 
-    public ShoppingCartItem(Long id, ShoppingCart shoppingCart, Product product, Order order, Integer quantity) {
+    public ShoppingCartItem(Long id, ShoppingCart shoppingCart, Product product, Integer quantity) {
         this.id = id;
         this.shoppingCart = shoppingCart;
         this.product = product;
-        this.order = order;
         this.quantity = quantity;
     }
 
