@@ -12,5 +12,5 @@ export const remove = (order) => {
 };
 
 export const getOrderItems = (id) => {
-    return http.get(url + "/Get?id=" + id);
+    return http.get(`${url}/getShoppingCartDetails/${id}`);
 };

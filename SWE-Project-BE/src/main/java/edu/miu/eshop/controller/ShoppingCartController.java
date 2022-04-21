@@ -6,6 +6,7 @@ import edu.miu.eshop.model.ShoppingCartItem;
 import edu.miu.eshop.service.implementation.ShoppingCartServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 @RestController
@@ -19,8 +20,7 @@ public class ShoppingCartController {
     }
 
     @PostMapping(value = "/addCartItem")
-
-    public ShoppingCart addCartItem(@RequestBody ShoppingCartRequest request) {
+    public ShoppingCartItem addCartItem(@RequestBody ShoppingCartRequest request) {
         return this.shoppingCartService.addCartItem(request);
     }
 
@@ -29,8 +29,8 @@ public class ShoppingCartController {
         this.shoppingCartService.updateQuantity(shoppingCartId, productId, isAdd);
     }
 
-    @GetMapping(value = "/getShoppingCartDetails")
-    public List<ShoppingCartItem> getShoppingCartDetails(Long shoppingCartId) {
-        return this.shoppingCartService.getShoppingCartDetails(shoppingCartId);
+    @GetMapping(value = "/getShoppingCartDetails/{id}")
+    public List<ShoppingCartItem> getShoppingCartDetails(@PathVariable Long id) {
+        return this.shoppingCartService.getShoppingCartDetails(id);
     }
 }
