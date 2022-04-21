@@ -1,32 +1,53 @@
 package edu.miu.eshop.service.implementation;
 
 import edu.miu.eshop.DTO.ShoppingCartRequest;
+import edu.miu.eshop.model.Customer;
+import edu.miu.eshop.model.Product;
 import edu.miu.eshop.model.ShoppingCart;
 import edu.miu.eshop.model.ShoppingCartItem;
+import edu.miu.eshop.repository.CustomerRepository;
+import edu.miu.eshop.repository.ProductRepository;
 import edu.miu.eshop.repository.ShoppingCartItemRepository;
 import edu.miu.eshop.repository.ShoppingCartRepository;
 import edu.miu.eshop.service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 public class ShoppingCartServiceImpl implements ShoppingCartService {
+
+    private final CustomerRepository customerRepository;
     private final ShoppingCartRepository shoppingCartRepository;
     private final ShoppingCartItemRepository shoppingCartItemRepository;
+    private final ProductRepository productRepository;
 
     @Autowired
-    public ShoppingCartServiceImpl(ShoppingCartRepository shoppingCartRepository, ShoppingCartItemRepository shoppingCartItemRepository) {
+    public ShoppingCartServiceImpl(CustomerRepository customerRepository, ShoppingCartRepository shoppingCartRepository, ShoppingCartItemRepository shoppingCartItemRepository, ProductRepository productRepository) {
+        this.customerRepository = customerRepository;
         this.shoppingCartRepository = shoppingCartRepository;
         this.shoppingCartItemRepository = shoppingCartItemRepository;
+        this.productRepository = productRepository;
     }
 
     @Override
-    public ShoppingCart addCartItem(ShoppingCartRequest request) {
-//        return this.shoppingCartRepository.save(shoppingCart);
-        return null;
+    public ShoppingCartItem addCartItem(ShoppingCartRequest request) {
+        if(request.getShoppingCartId() == null) {
+            Customer customer = this.customerRepository.findById(request.getUserId()).orElse(null);
+            Product product = this.productRepository.findById(request.getProductId()).orElse(null);
+            ShoppingCart shoppingCart = this.shoppingCartRepository.save(new ShoppingCart(null, customer, LocalDate.now(), true));
+
+            return this.shoppingCartItemRepository.save(new ShoppingCartItem(null, shoppingCart, product, 1));
+        }
+        else {
+            ShoppingCartItem shoppingCartItem = this.shoppingCartItemRepository.findAll().stream().filter(x -> x.getShoppingCart().getShoppingCartId() == request.getShoppingCartId()).findFirst().get();
+            shoppingCartItem.setQuantity(shoppingCartItem.getQuantity() + 1);
+            return this.shoppingCartItemRepository.save(shoppingCartItem);
+        }
     }
 
     @Override

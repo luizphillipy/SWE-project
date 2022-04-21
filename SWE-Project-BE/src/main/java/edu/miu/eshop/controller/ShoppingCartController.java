@@ -19,8 +19,7 @@ public class ShoppingCartController {
     }
 
     @PostMapping(value = "/addCartItem")
-
-    public ShoppingCart addCartItem(@RequestBody ShoppingCartRequest request) {
+    public ShoppingCartItem addCartItem(@RequestBody ShoppingCartRequest request) {
         return this.shoppingCartService.addCartItem(request);
     }
 

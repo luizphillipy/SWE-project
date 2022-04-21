@@ -16,10 +16,6 @@ public class ShoppingCart {
     @JoinColumn(name = "customerId")
     private Customer customer;
 
-    @OneToMany
-    @JoinColumn(name = "id")
-    private List<ShoppingCartItem> shoppingCartItems;
-
     private LocalDate dateAdded;
 
     private boolean isActive;
@@ -27,10 +23,9 @@ public class ShoppingCart {
     public ShoppingCart() {
     }
 
-    public ShoppingCart(Long shoppingCartId, Customer customer, List<ShoppingCartItem> shoppingCartItems, LocalDate dateAdded, boolean isActive) {
+    public ShoppingCart(Long shoppingCartId, Customer customer, LocalDate dateAdded, boolean isActive) {
         this.shoppingCartId = shoppingCartId;
         this.customer = customer;
-        this.shoppingCartItems = shoppingCartItems;
         this.dateAdded = dateAdded;
         this.isActive = isActive;
     }
@@ -49,14 +44,6 @@ public class ShoppingCart {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
-    }
-
-    public List<ShoppingCartItem> getShoppingCartItems() {
-        return shoppingCartItems;
-    }
-
-    public void setShoppingCartItems(List<ShoppingCartItem> shoppingCartItems) {
-        this.shoppingCartItems = shoppingCartItems;
     }
 
     public LocalDate getDateAdded() {
