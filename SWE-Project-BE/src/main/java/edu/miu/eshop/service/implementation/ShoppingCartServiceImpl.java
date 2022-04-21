@@ -88,7 +88,11 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     public Integer getShoppingCartItemsNumber(Long shoppingCartId) {
         List<ShoppingCartItem> shoppingCartItems = this.shoppingCartItemRepository.findAll().stream().filter(x -> x.getShoppingCart().getShoppingCartId() == shoppingCartId).collect(Collectors.toList());
 
-        if (shoppingCartItems.size() > 0) return shoppingCartItems.size();
+        Integer quantity = 0;
+        for (var item : shoppingCartItems) {
+            quantity += item.getQuantity();
+        }
+        if (shoppingCartItems.size() > 0) return quantity;
 
         return 0;
     }
