@@ -20,7 +20,9 @@ class UserItems extends Component {
 
     addToCart = async (item) => {
         await add({
-            sellerItemId: item.id, userId: this.context.currentUser.customerId, quantity: 1,
+            product: item,
+            userId: this.context.currentUser.customerId,
+            quantity: 1,
         });
         let items = [...this.state.items];
         let selectedItem = items.find((selected) => selected.id === item.id);
@@ -68,20 +70,11 @@ const UserItemsComponent = (props) => {
                     <div className="card__description">{item.description}</div>
                     <div className="item__seller">Price: ${item.price}</div>
                     <div className="item__footer">
-                        {isLoggedIn() && item.isInBag && (<button
-                            className="buy__button"
-                            onClick={() => props.removeFromCart(item)}
-                        >
-                            -
-                        </button>)}
-                        <div>{isLoggedIn() && item.isInBag && item.quantity + ""}</div>
-
                         {isLoggedIn() && (<button
                             className="buy__button"
                             onClick={() => props.addToCart(item)}
                         >
                             {!item.isInBag && "Add To Cart"}
-                            {item.isInBag && "+"}
                         </button>)}
                     </div>
                 </div>

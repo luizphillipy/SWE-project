@@ -1,12 +1,10 @@
 package edu.miu.eshop.controller;
 
+import edu.miu.eshop.DTO.ShoppingCartRequest;
 import edu.miu.eshop.model.ShoppingCart;
 import edu.miu.eshop.model.ShoppingCartItem;
 import edu.miu.eshop.service.implementation.ShoppingCartServiceImpl;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,16 +12,15 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping(value = {"api", "api/shoppingCart"})
 public class ShoppingCartController {
-
     private final ShoppingCartServiceImpl shoppingCartService;
 
     public ShoppingCartController(ShoppingCartServiceImpl shoppingCartService) {
         this.shoppingCartService = shoppingCartService;
     }
 
-    @GetMapping(value = "/addCartItem")
-    public ShoppingCart addCartItem(ShoppingCart item) {
-        return this.shoppingCartService.addCartItem(item);
+    @PostMapping(value = "/addCartItem")
+    public ShoppingCart addCartItem(@RequestBody ShoppingCartRequest request) {
+        return this.shoppingCartService.addCartItem(request);
     }
 
     @GetMapping(value = "/updateQuantity")

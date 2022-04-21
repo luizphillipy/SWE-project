@@ -1,6 +1,6 @@
 package edu.miu.eshop.service.implementation;
 
-import edu.miu.eshop.model.Customer;
+import edu.miu.eshop.DTO.ShoppingCartRequest;
 import edu.miu.eshop.model.ShoppingCart;
 import edu.miu.eshop.model.ShoppingCartItem;
 import edu.miu.eshop.repository.ShoppingCartItemRepository;
@@ -24,8 +24,9 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-    public ShoppingCart addCartItem(ShoppingCart shoppingCart) {
-        return this.shoppingCartRepository.save(shoppingCart);
+    public ShoppingCart addCartItem(ShoppingCartRequest request) {
+//        return this.shoppingCartRepository.save(shoppingCart);
+        return null;
     }
 
     @Override
@@ -42,10 +43,10 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     @Override
     public Long getActiveShoppingCartId(Long userId) {
-        ShoppingCart shoppingCart = this.shoppingCartRepository.findAll().stream().filter(x -> x.getCustomer().getCustomerId() == userId ).findFirst().orElseGet(() -> null);
+        ShoppingCart shoppingCart = this.shoppingCartRepository.findAll().stream().filter(x -> x.getCustomer().getCustomerId() == userId).findFirst().orElseGet(() -> null);
 
-        if(shoppingCart != null) {
-            return  shoppingCart.getShoppingCartId();
+        if (shoppingCart != null) {
+            return shoppingCart.getShoppingCartId();
         }
 
         return null;
@@ -55,7 +56,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     public Integer getShoppingCartItemsNumber(Long shoppingCartId) {
         List<ShoppingCartItem> shoppingCartItems = this.shoppingCartItemRepository.findAll().stream().filter(x -> x.getShoppingCart().getShoppingCartId() == shoppingCartId).collect(Collectors.toList());
 
-        if(shoppingCartItems.size() > 0) return shoppingCartItems.size();
+        if (shoppingCartItems.size() > 0) return shoppingCartItems.size();
 
         return 0;
     }
