@@ -59,13 +59,15 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     @Override
     public void updateQuantity(Long shoppingCartId, Long productId, boolean isAdd) {
-        ShoppingCartItem shoppingCartItem = this.shoppingCartItemRepository.findByShoppingCartIdAndProductId(shoppingCartId, productId);
-        if (isAdd)
-            shoppingCartItem.setQuantity(shoppingCartItem.getQuantity() + 1);
-        else
-            shoppingCartItem.setQuantity(shoppingCartItem.getQuantity() - 1);
+        ShoppingCartItem shoppingCartItem = this.shoppingCartItemRepository.findAll().stream().filter(x -> x.getShoppingCart().getShoppingCartId() == shoppingCartId && x.getProduct().getId() == productId).findFirst().orElse(null);
+        if(shoppingCartItem != null) {
+            if (isAdd)
+                shoppingCartItem.setQuantity(shoppingCartItem.getQuantity() + 1);
+            else
+                shoppingCartItem.setQuantity(shoppingCartItem.getQuantity() - 1);
 
-        this.shoppingCartItemRepository.save(shoppingCartItem);
+            this.shoppingCartItemRepository.save(shoppingCartItem);
+        }
     }
 
     @Override

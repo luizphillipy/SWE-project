@@ -3,7 +3,7 @@ import {getItemsById} from "../../services/component/items";
 import {withTitleBar} from "../../hoc/withTitleBar";
 import {isLoggedIn,} from "../../services/generic/currentUserValidation";
 import UserContext from "../../context/userContext";
-import {add, remove} from "../../services/component/orders";
+import {add, update} from "../../services/component/orders";
 
 class UserItems extends Component {
     static contextType = UserContext;
@@ -28,14 +28,9 @@ class UserItems extends Component {
     };
 
     removeFromCart = async (item) => {
-        await remove({
+        await update({
             sellerItemId: item.id, userId: this.context.currentUser.customerId, quantity: 1,
         });
-        let items = [...this.state.items];
-        let selectedItem = items.find((selected) => selected.id === item.id);
-        selectedItem.quantity -= 1;
-        selectedItem.isInBag = selectedItem.quantity !== 0;
-        this.setState({items});
         this.context.updateNumber(--this.context.currentUser.bagItemsQuantity);
     };
 

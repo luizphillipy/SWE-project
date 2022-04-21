@@ -1,12 +1,11 @@
 package edu.miu.eshop.controller;
 
 import edu.miu.eshop.DTO.ShoppingCartRequest;
-import edu.miu.eshop.model.ShoppingCart;
+import edu.miu.eshop.DTO.UpdateQuantityRequest;
 import edu.miu.eshop.model.ShoppingCartItem;
 import edu.miu.eshop.service.implementation.ShoppingCartServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
 import java.util.List;
 
 @RestController
@@ -25,8 +24,8 @@ public class ShoppingCartController {
     }
 
     @PostMapping(value = "/updateQuantity")
-    public void updateQuantity(Long shoppingCartId, Long productId, boolean isAdd) {
-        this.shoppingCartService.updateQuantity(shoppingCartId, productId, isAdd);
+    public void updateQuantity(@RequestBody UpdateQuantityRequest request) {
+        this.shoppingCartService.updateQuantity(request.getShoppingCartId(), request.getProductId(), request.isAdd());
     }
 
     @GetMapping(value = "/getShoppingCartDetails/{id}")

@@ -7,8 +7,8 @@ export const add = (order) => {
     return http.post(`${url}/addCartItem`, order);
 };
 
-export const remove = (order) => {
-    return http.post(url + "/Remove", order);
+export const update = (order) => {
+    return http.post(url + "/updateQuantity", order);
 };
 
 export const getOrderItems = (id) => {
