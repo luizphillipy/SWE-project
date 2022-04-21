@@ -48,6 +48,14 @@ public class Customer implements UserDetails {
         return null;
     }
 
+    public Long getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
+    }
+
     @Override
     public boolean isAccountNonExpired() {
         return false;
@@ -84,14 +92,6 @@ public class Customer implements UserDetails {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Long getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
     }
 
     public void setUsername(String username) {

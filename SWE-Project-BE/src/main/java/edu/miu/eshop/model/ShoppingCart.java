@@ -22,14 +22,17 @@ public class ShoppingCart {
 
     private LocalDate dateAdded;
 
+    private boolean isActive;
+
     public ShoppingCart() {
     }
 
-    public ShoppingCart(Long shoppingCartId, Customer customer, List<ShoppingCartItem> shoppingCartItems, LocalDate dateAdded) {
+    public ShoppingCart(Long shoppingCartId, Customer customer, List<ShoppingCartItem> shoppingCartItems, LocalDate dateAdded, boolean isActive) {
         this.shoppingCartId = shoppingCartId;
         this.customer = customer;
         this.shoppingCartItems = shoppingCartItems;
         this.dateAdded = dateAdded;
+        this.isActive = isActive;
     }
 
     public Long getShoppingCartId() {
@@ -62,5 +65,13 @@ public class ShoppingCart {
 
     public void setDateAdded(LocalDate dateAdded) {
         this.dateAdded = dateAdded;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 }

@@ -15,9 +15,9 @@ public class Order {
     @JoinColumn(name = "customerId")
     private Customer customer;
 
-    @OneToMany
+    @OneToOne
     @JoinColumn(name = "shoppingCartId")
-    private List<ShoppingCartItem> shoppingCartItems;
+    private ShoppingCart shoppingCart;
 
     private Double Total;
     private LocalDate dateCreated;
@@ -25,10 +25,10 @@ public class Order {
     public Order() {
     }
 
-    public Order(Long orderId, Customer customer, List<ShoppingCartItem> shoppingCartItems, Double total, LocalDate dateCreated) {
+    public Order(Long orderId, Customer customer, ShoppingCart shoppingCart, Double total, LocalDate dateCreated) {
         this.orderId = orderId;
         this.customer = customer;
-        this.shoppingCartItems = shoppingCartItems;
+        this.shoppingCart = shoppingCart;
         Total = total;
         this.dateCreated = dateCreated;
     }
@@ -49,12 +49,12 @@ public class Order {
         this.customer = customer;
     }
 
-    public List<ShoppingCartItem> getShoppingCartItems() {
-        return shoppingCartItems;
+    public ShoppingCart getShoppingCart() {
+        return shoppingCart;
     }
 
-    public void setShoppingCartItems(List<ShoppingCartItem> shoppingCartItems) {
-        this.shoppingCartItems = shoppingCartItems;
+    public void setShoppingCart(ShoppingCart shoppingCart) {
+        this.shoppingCart = shoppingCart;
     }
 
     public Double getTotal() {
