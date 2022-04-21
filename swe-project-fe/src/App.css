@@ -1,3 +1,8 @@
+#root {
+  --bg: #455A64;
+  --pc: #607D8B;
+}
+
 .App {
   text-align: center;
 }
@@ -47,7 +52,7 @@ h1 {
 .container .box {
   display: flex;
   flex-direction: column;
-  background: #4caf50;
+  background: var(--pc);
   border-radius: 15px;
   box-sizing: border-box;
   display: inline-block;
@@ -259,7 +264,7 @@ h1 {
   background: rgba(255, 255, 255, 1);
   height: 22rem;
   border-radius: 10px;
-  box-shadow: 0 0 10px 0 #178841;
+  box-shadow: 0 0 10px 0 var(--bg);
   width: 100%;
   position: absolute;
   top: 0;

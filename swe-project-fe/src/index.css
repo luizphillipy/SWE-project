@@ -1,5 +1,6 @@
 #root {
-    --bg: #125430
+    --bg: #455A64;
+    --pc: #607D8B;
 }
 
 body {
@@ -54,7 +55,7 @@ code {
 /* NavBar */
 
 .navbar--green {
-    background: #125430;
+    background: var(--bg);
 }
 
 .navbar a {
@@ -62,7 +63,7 @@ code {
 }
 
 .header {
-    background: #178841;
+    background: var(--pc);
 }
 
 .navbar__sticky {
@@ -134,7 +135,7 @@ code {
     width: 80px;
     border-radius: 10px;
     background-color: #fff;
-    border: 1px solid #178841;
+    border: 1px solid var(--pc);
 }
 
 .sub-menu-1 ul {
@@ -199,7 +200,7 @@ code {
 }
 
 .manage-offers__header {
-    border-bottom: 1px solid #178841;
+    border-bottom: 1px solid var(--pc);
     padding: 1rem;
     margin-bottom: 1.5rem;
     text-align: center;
@@ -228,7 +229,7 @@ code {
 
 .approving__button {
     color: #fff;
-    background-color: #125430;
+    background-color: var(--bg);
     font-size: 1rem;
     text-align: center;
     border-radius: 15px;
@@ -239,13 +240,13 @@ code {
 }
 
 .approving__button:hover {
-    background-color: #178841;
+    background-color: var(--pc);
 }
 
 .admin__cards {
     border-radius: 15px;
     box-shadow: 4px 4px 12px -3px #000;
-    color: #388e3c;
+    color: var(--pc);
     display: flex;
     flex-direction: column;
     margin: 1rem;
@@ -255,8 +256,8 @@ code {
 
 .admin__cards:hover {
     text-decoration: none;
-    color: #178841;
-    box-shadow: 5px 5px 12px -3px #178841;
+    color: var(--pc);
+    box-shadow: 5px 5px 12px -3px var(--pc);
 }
 
 .card--white {
@@ -327,7 +328,7 @@ code {
     margin-right: 0.8rem;
     width: 50px;
     height: 50px;
-    color: #388e3c;
+    color: var(--pc);
 }
 
 /* list-categories */
@@ -335,7 +336,7 @@ code {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #388e3c;
+    background: var(--pc);
     font-size: 1rem;
     font-weight: 500;
     padding-left: 1rem;
@@ -369,11 +370,11 @@ code {
 
 /* user items */
 .user__image {
-    color: #178841;
+    color: var(--pc);
 }
 
 .add-seller__button {
-    background: #178841;
+    background: var(--pc);
     border-radius: 10px;
     border: none;
     outline: none;
@@ -384,7 +385,7 @@ code {
 }
 
 .add-seller__button:hover {
-    background: #388e3c;
+    background: var(--pc);
 }
 
 .userItems__container {
@@ -413,7 +414,7 @@ code {
     /*overflow: hidden;*/
     max-height: 500px;
     border-radius: 15px;
-    border: 1px solid #178841;
+    border: 1px solid var(--pc);
     width: 230px;
     padding: 0.5rem;
 }
@@ -454,7 +455,7 @@ code {
 
 .buy__button {
     outline: none;
-    border: 1px solid #388e3c;
+    border: 1px solid var(--pc);
     border-radius: 15px;
     padding: 0.2rem 2rem;
     background: none;
@@ -462,12 +463,12 @@ code {
     margin-top: 1rem;
     font-size: 1rem;
     font-weight: 600;
-    box-shadow: 0 0 3px 0 #388e3c, inset 0 0 3px 0 #388e3c;
+    box-shadow: 0 0 3px 0 var(--pc), inset 0 0 3px 0 var(--pc);
     transition: box-shadow 0.2s, transform 0.2s;
 }
 
 .buy__button:hover {
-    box-shadow: 0 0 10px 0 #388e3c, inset 0 0 10px 0 #388e3c;
+    box-shadow: 0 0 10px 0 var(--pc), inset 0 0 10px 0 var(--pc);
     transform: translateY(-3px);
 }
 
@@ -492,7 +493,7 @@ code {
     display: flex;
     margin-bottom: 1rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid #178841;
+    border-bottom: 1px solid var(--pc);
 }
 
 .gategoryList__name {
@@ -501,7 +502,7 @@ code {
 
 .gategory__add-button {
     color: #fff;
-    background: #178841;
+    background: var(--pc);
     border: none;
     outline: none;
     padding: 0.3rem 1rem;
@@ -511,7 +512,7 @@ code {
 
 .CategoriesList__item {
     align-items: center;
-    background: #178841;
+    background: var(--pc);
     border-radius: 15px 0 0 15px;
     display: flex;
     font-size: 1.5rem;
@@ -531,7 +532,7 @@ code {
 }
 
 .edit__icone {
-    color: #178841;
+    color: var(--pc);
     font-size: larger;
     margin-right: 0.3rem;
     width: 30px;
@@ -541,8 +542,8 @@ code {
 .category-edit__icon {
     background: #fff;
     border-radius: 50%;
-    border: 1px solid #178841;
-    color: #178841;
+    border: 1px solid var(--pc);
+    color: var(--pc);
     cursor: pointer;
     height: 36px;
     text-align: center;
@@ -561,7 +562,7 @@ code {
 }
 
 .userlist__badge {
-    border: 1px solid #178841;
+    border: 1px solid var(--pc);
     border-radius: 15px;
     padding: 3px 10px;
 }
@@ -588,7 +589,7 @@ code {
 }
 
 .delete__button {
-    background: #178841;
+    background: var(--pc);
     width: 50px;
     height: 50px;
     outline: none;
@@ -600,7 +601,7 @@ code {
 }
 
 .delete__button:hover {
-    background: #388e3c;
+    background: var(--pc);
 }
 
 .user-list__head {
@@ -609,7 +610,7 @@ code {
     justify-content: space-between;
     margin-bottom: 1rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid #178841;
+    border-bottom: 1px solid var(--pc);
     align-items: center;
 }
 
@@ -648,7 +649,7 @@ code {
 .order-table-head__row {
     display: flex;
     flex-wrap: wrap;
-    border-bottom: 1px solid #178841;
+    border-bottom: 1px solid var(--pc);
     margin-bottom: 1rem;
 }
 
@@ -710,7 +711,7 @@ code {
     position: absolute;
     top: 7px;
     right: 7px;
-    background: #178841;
+    background: var(--pc);
     color: #fff;
     display: inline-block;
     width: 25px;
@@ -733,7 +734,7 @@ code {
 /* Profile */
 .profile__content {
     border-radius: 15px;
-    border: 1px solid #178841;
+    border: 1px solid var(--pc);
     display: flex;
     flex-direction: column;
     height: 350px;
@@ -761,7 +762,7 @@ code {
 
 .profile__image {
     align-items: center;
-    background-color: #178841;
+    background-color: var(--pc);
     border-bottom: 1px solid #757575;
     display: flex;
     height: 170px;

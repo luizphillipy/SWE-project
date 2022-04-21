@@ -48,7 +48,10 @@ class UserOrderList extends Component {
                 <div className="order-table-head__row">
                     <div className="order-table__columns">Name</div>
                     <div className="order-table__columns">Price</div>
-                    <div className="order-table__columns">Quantity</div>
+                    <div style={{
+                        flexDirection: 'row', display: 'flex', justifyContent: 'center', alignSelf: 'center'
+                    }}>Quantity
+                    </div>
                     <div className="order-table__columns">Total</div>
                 </div>
 
@@ -56,9 +59,36 @@ class UserOrderList extends Component {
                     <div className="order-table__row" key={id}>
                         <div className="order-table__columns">{name}</div>
                         <div className="order-table__columns">{price}</div>
-                        <span onClick={() => this.removeFromCart(id)}> - </span>
-                        <div className="order-table__columns">{quantity}</div>
-                        <span onClick={() => this.addToCart(id)}> + </span>
+                        <div style={{
+                            flexDirection: 'row', display: 'flex', justifyContent: 'space-between', alignSelf: 'center'
+                        }}>
+                            <span style={{
+                                cursor: 'pointer',
+                                backgroundColor: '#607D8B',
+                                paddingBottom: 3,
+                                paddingTop: 3,
+                                paddingLeft: 10,
+                                paddingRight: 10,
+                                minWidth: 30,
+                                borderRadius: 3,
+                                color: '#fff',
+                                marginRight: 10
+                            }} onClick={() => this.removeFromCart(id)}> - </span>
+                            <div className="order-table__columns">{quantity}</div>
+                            <span style={{
+                                cursor: 'pointer',
+                                backgroundColor: '#607D8B',
+                                paddingBottom: 5,
+                                paddingTop: 5,
+                                paddingLeft: 10,
+                                paddingRight: 10,
+                                minWidth: 30,
+                                borderRadius: 3,
+                                color: '#fff',
+                                marginLeft: 10
+                            }}
+                                  onClick={() => this.addToCart(id)}> + </span>
+                        </div>
                         <div className="order-table__columns">
                             {quantity * price}
                         </div>
