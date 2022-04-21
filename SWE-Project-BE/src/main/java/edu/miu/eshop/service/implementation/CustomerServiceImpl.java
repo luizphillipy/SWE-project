@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
+
     private final CustomerRepository CustomerRepository;
 
     public CustomerServiceImpl(CustomerRepository CustomerRepository) {
@@ -29,5 +30,6 @@ public class CustomerServiceImpl implements CustomerService {
             return null;
         }
         return CustomerRepository.save(Customer);
+
     }
 }

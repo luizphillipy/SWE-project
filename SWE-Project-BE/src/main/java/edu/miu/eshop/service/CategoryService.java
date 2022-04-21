@@ -6,6 +6,5 @@ import java.util.List;
 
 public interface CategoryService {
     List<Category> getAllMain();
-
     List<Category> getSubById(long id);
 }

@@ -3,7 +3,6 @@ package edu.miu.eshop.controller;
 import edu.miu.eshop.model.ShoppingCart;
 import edu.miu.eshop.model.ShoppingCartItem;
 import edu.miu.eshop.service.implementation.ShoppingCartServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,8 +15,11 @@ import java.util.List;
 @RequestMapping(value = {"api", "api/shoppingCart"})
 public class ShoppingCartController {
 
-    @Autowired
-    private ShoppingCartServiceImpl shoppingCartService;
+    private final ShoppingCartServiceImpl shoppingCartService;
+
+    public ShoppingCartController(ShoppingCartServiceImpl shoppingCartService) {
+        this.shoppingCartService = shoppingCartService;
+    }
 
     @GetMapping(value = "/addCartItem")
     public ShoppingCart addCartItem(ShoppingCart item) {

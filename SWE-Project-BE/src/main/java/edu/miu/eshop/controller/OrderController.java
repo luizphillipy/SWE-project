@@ -15,8 +15,11 @@ import java.util.List;
 @RequestMapping(value = {"api", "api/order"})
 public class OrderController {
 
-    @Autowired
-    private OrderServiceImpl orderService;
+    private final OrderServiceImpl orderService;
+
+    public OrderController(OrderServiceImpl orderService) {
+        this.orderService = orderService;
+    }
 
     @GetMapping(value = "/")
     public List<Order> getOrders(Long customerId) {

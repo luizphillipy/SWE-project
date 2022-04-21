@@ -12,7 +12,6 @@ import java.util.List;
 
 @Service
 public class ShoppingCartServiceImpl implements ShoppingCartService {
-
     private final ShoppingCartRepository shoppingCartRepository;
     private final ShoppingCartItemRepository shoppingCartItemRepository;
 
